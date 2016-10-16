@@ -51,8 +51,4 @@ class Ticket
     return result
   end
 
-  def self.map_item(sql)
-    result = Ticket.map_items(sql)
-    return result.first
-  end
 end

@@ -29,6 +29,12 @@ class Film
     return Customer.map_items(sql)
   end
 
+  def attendance()
+    sql = "SELECT t.id from tickets t WHERE t.film_id = #{@id}"
+    tickets = Film.map_items(sql)
+    return tickets.count
+  end
+
   def self.all()
     sql = "SELECT * FROM films"
     SqlRunner.run(sql)
