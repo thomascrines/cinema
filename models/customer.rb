@@ -30,13 +30,19 @@ class Customer
   end
 
   def tickets()
-    sql = "SELECT t.id from tickets t WHERE t.customer_id = #{@id}"
-    tickets = Ticket.map_items(sql)
-    return tickets.count
+    sql = "SELECT t.id FROM tickets t WHERE t.customer_id = #{@id}"
+    return Ticket.map_items(sql)
   end
 
-  def buy_ticket()
-    
+  # def money_owed()
+  #   sql = "SELECT SUM(price) FROM films INNER JOIN tickets ON tickets.film_id = films.id WHERE tickets.customer_id = #{@id}"
+  #   cost = Film.map_item(sql)
+  # end
+
+  def number_of_tickets()
+    sql = "SELECT t.id FROM tickets t WHERE t.customer_id = #{@id}"
+    tickets = Ticket.map_items(sql)
+    return tickets.count
   end
 
   def self.all()
