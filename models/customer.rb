@@ -45,4 +45,9 @@ class Customer
     return result
   end
 
+  def self.map_item(sql)
+    result = Customer.map_items(sql)
+    return result.first
+  end
+
 end

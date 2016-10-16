@@ -27,12 +27,12 @@ class Ticket
 
   def film
     sql = "SELECT * FROM films WHERE id = #{@film_id}"
-    return Ticket.map_item(sql)
+    return Film.map_item(sql)
   end
 
   def customer
     sql = "SELECT * FROM customers WHERE id = #{@customer_id}"
-    return Ticket.map_item(sql)
+    return Customer.map_item(sql)
   end
 
   def self.all()

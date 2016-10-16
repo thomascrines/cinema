@@ -23,7 +23,12 @@ class Film
     else save() 
     end
   end
- 
+
+  def customers()
+    sql = "SELECT c.* FROM customers c INNER JOIN tickets t ON t.customer_id = c.id WHERE film_id = #{@id}"
+    return Customer.map_items(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM films"
     SqlRunner.run(sql)
@@ -39,6 +44,11 @@ class Film
     films = SqlRunner.run(sql)
     result = films.map {|film|Film.new(film)}
     return result
+  end
+
+  def self.map_item(sql)
+    result = Film.map_items(sql)
+    return result.first
   end
 
 end
