@@ -1,8 +1,10 @@
 require_relative('../db/sql_runner')
+require_relative('data_mapper')
 
 class Customer
 
-  attr_reader :id, :name, :funds
+  attr_reader :id
+  attr_accessor :name, :funds
 
   def initialize(options)
     @id = options['id']
@@ -58,6 +60,7 @@ class Customer
   def self.map_items(sql)
     customers = SqlRunner.run(sql)
     result = customers.map {|customer| Customer.new(customer)}
+    # result = DataMapper.data_to_objects(self, result)
     return result
   end
 
